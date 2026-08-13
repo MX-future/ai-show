@@ -1,0 +1,27 @@
+{
+  "name": "ai-portfolio-netlify",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "AI 项目作品集：Netlify + Supabase，前台展示 + 管理后台 + dist 包托管预览",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "node scripts/local-server.mjs"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.0.5",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.112.3",
+    "adm-zip": "^0.6.0",
+    "framer-motion": "^13.1.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  }
+}

@@ -1,0 +1,35 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# API：统一由 api function 处理（内部按路径路由）
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api"
+  status = 200
+  force = true
+
+# 已上传 dist 的静态代理
+[[redirects]]
+  from = "/sites/*"
+  to = "/.netlify/functions/sites"
+  status = 200
+  force = true
+
+# 上传的图片资源
+[[redirects]]
+  from = "/images/*"
+  to = "/.netlify/functions/images"
+  status = 200
+  force = true
+
+# SPA 兜底
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
