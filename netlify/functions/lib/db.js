@@ -170,10 +170,15 @@ const supabaseImpl = {
 
 /* ================= 本地文件系统实现 ================= */
 function ensureLocal() {
-  fs.mkdirSync(LOCAL_DIR, { recursive: true });
-  fs.mkdirSync(SITES_DIR, { recursive: true });
-  fs.mkdirSync(IMAGES_DIR, { recursive: true });
-  if (!fs.existsSync(PROJECTS_FILE)) fs.writeFileSync(PROJECTS_FILE, '[]');
+  try {
+    fs.mkdirSync(LOCAL_DIR, { recursive: true });
+    fs.mkdirSync(SITES_DIR, { recursive: true });
+    fs.mkdirSync(IMAGES_DIR, { recursive: true });
+    if (!fs.existsSync(PROJECTS_FILE)) fs.writeFileSync(PROJECTS_FILE, '[]');
+  } catch (e) {
+    // 在 Netlify 等只读环境（/var/task）下本地存储不可用
+    throw new Error('本地存储不可用（' + (e.code || e.message) + '）。请配置 SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY 环境变量使用 Supabase 存储。');
+  }
 }
 function readLocalProjects() {
   ensureLocal();
