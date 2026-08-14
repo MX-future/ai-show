@@ -35,6 +35,9 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   background: var(--bg);
+  /* sticky footer：内容不足时 footer 贴底 */
+  display: flex;
+  flex-direction: column;
 }
 
 /* ===== 前台专属背景 ===== */
@@ -89,7 +92,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   padding-left: max(clamp(16px, 4vw, 32px), env(safe-area-inset-left));
   padding-right: max(clamp(16px, 4vw, 32px), env(safe-area-inset-right));
 }
-main#app { position: relative; z-index: 1; }
+main#app { position: relative; z-index: 1; flex: 1 0 auto; }
 
 /* ===== 背景粒子层 ===== */
 #particles {
@@ -254,6 +257,14 @@ main#app { position: relative; z-index: 1; }
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
   gap: clamp(16px, 2vw, 28px);
   padding-bottom: 48px;
+}
+/* 无项目提示：占满整行并居中 */
+.grid-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-dim);
+  padding: 56px 0;
+  font-size: 14px;
 }
 .card {
   position: relative;
@@ -688,6 +699,7 @@ main#app { position: relative; z-index: 1; }
 /* ===== 页脚 ===== */
 .footer {
   position: relative; z-index: 1;
+  flex-shrink: 0;
   border-top: 1px solid rgba(255,255,255,.55);
   padding: 26px 0 30px;
   text-align: center;
@@ -1050,7 +1062,7 @@ select.input { cursor: pointer; }
 .login-card h2 { margin-bottom: 8px; font-size: 21px; font-weight: 800; }
 .login-card .login-sub { margin-bottom: 28px; }
 .login-card .input { width: 100%; margin-bottom: 16px; }
-.login-card .load-btn { width: 100%; }
+.login-card .load-btn { width: 100%; justify-content: center; }
 .pwd-card { max-width: 440px; margin: 0 auto; padding: 32px 36px; border-radius: 18px; }
 .pwd-card h2 { margin-bottom: 24px; font-size: 19px; font-weight: 800; }
 .pwd-card .input { width: 100%; margin-bottom: 16px; }

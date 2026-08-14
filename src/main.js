@@ -123,7 +123,7 @@ async function renderHome() {
       </div>
 
       <div class="grid">
-        ${list.map((p, i) => cardHTML(p, i)).join('') || '<p style="color:var(--text-dim);text-align:center;padding:40px 0">该分类下暂无项目</p>'}
+        ${list.map((p, i) => cardHTML(p, i)).join('') || '<p class="grid-empty">该分类下暂无项目</p>'}
       </div>
     </div>`;
 
@@ -137,7 +137,7 @@ function renderGrid() {
   const grid = $('.grid');
   if (!grid) return;
   const list = projects.filter((p) => filter === 'all' || p.type === filter);
-  grid.innerHTML = list.map((p, i) => cardHTML(p, i)).join('') || '<p style="color:var(--text-dim);text-align:center;padding:40px 0">该分类下暂无项目</p>';
+  grid.innerHTML = list.map((p, i) => cardHTML(p, i)).join('') || '<p class="grid-empty">该分类下暂无项目</p>';
   bindCards();
 
   const label = $('.section-head-title .label');
