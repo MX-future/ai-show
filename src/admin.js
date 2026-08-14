@@ -6,7 +6,7 @@
  */
 const app = document.getElementById('app');
 const logoutBtn = document.getElementById('logoutBtn');
-const TOKEN_KEY = 'portfolio_admin_token';
+const TOKEN_KEY = 'portfolio_admin_token_v2';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const token = () => localStorage.getItem(TOKEN_KEY) || '';
