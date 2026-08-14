@@ -174,7 +174,7 @@ function startClock() {
 function cardHTML(p, i) {
   const typeSvg = typeIcon(p.type);
   return `
-    <article class="card" data-id="${esc(p.id)}" style="animation-delay:${(i % 12) * 50}ms">
+    <article class="card" data-id="${esc(p.id)}" title="${esc(p.name)}" style="animation-delay:${(i % 12) * 50}ms">
       <div class="card-cover ${p.cover_image ? 'has-cover' : 'default-deco'}" style="background:linear-gradient(135deg,${esc(p.cover_from)},${esc(p.cover_to)})">
         ${p.cover_image ? `<img class="cover-img" src="${esc(p.cover_image)}" alt="${esc(p.name)}" loading="lazy" />` : ''}
         <span class="cover-shade"></span>
