@@ -27,9 +27,7 @@
   status = 200
   force = true
 
-# SPA 兜底
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true
+# 注意：不要加 `/* → /index.html` 的 SPA 兜底！
+# 本站为 hash 路由（#/project/xxx），无需 fallback；
+# 且 force=true 会强制把 assets/*.js 等静态文件也重定向成 index.html，
+# 导致浏览器报 "MIME type of text/html" 错误。
